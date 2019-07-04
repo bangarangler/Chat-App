@@ -1,6 +1,9 @@
 import React, {useEffect, useState, useRef} from 'react';
 import './ChatPanel.css';
-import firebase from '../logic/firebase.js';
+import firebase from '../../logic/firebase.js';
+import CurrentRoom from './CurrentRoom.js'
+import Messages from './Messages.js'
+import SendMessage from './SendMessage.js'
 
 function ChatPanel() {
   const [messages, setMessages] = useState([]);
@@ -26,30 +29,11 @@ function ChatPanel() {
 
     return () => removeMessagesListener();
   }, [])
-  const messagesElements = (
-    <ul>
-      {messages.map((item, index) => (
-        <li key={index}>{item.text}</li>
-      ))}
-    </ul>
-  );
   return (
     <div className="ChatPanel">
-      <div>Room 1</div>
-      <div style={{flexGrow: 1}}>{messagesElements}</div>
-      <div style={{display: 'flex'}}>
-        <input style={{flexGrow: 1}} placeholder="insert message ..." />
-        <button
-          onClick={() =>
-            messagesRefFirebase
-              .child('id2')
-              .set({text: 'some text 2'})
-              .then(msg => console.log(`set success : ${msg}`))
-              .catch(err => console.log(`set error: ${err}`))
-          }>
-          send message
-        </button>
-      </div>
+    <CurrentRoom />
+    <Messages messages={messages}/>
+    <SendMessage messagesRefFirebase={messagesRefFirebase}/>
     </div>
   );
 }

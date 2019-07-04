@@ -1,6 +1,6 @@
 import React from 'react';
-import SidePanel from './SidePanel'
-import ChatPanel from './ChatPanel'
+import SidePanel from './SidePanel/SidePanel.js'
+import ChatPanel from './ChatPanel/ChatPanel.js'
 import './ChatApp.css'
 
 const ChatApp = () => {
