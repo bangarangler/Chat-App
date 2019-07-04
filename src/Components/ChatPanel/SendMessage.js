@@ -4,7 +4,7 @@ import CurrentRoomContext from '../../context/CurrentRoomContext.js';
 import './SendMessage.css';
 import firebase from '../../logic/firebase.js'
 
-const SendMessage = ({messagesRefFirebase}) => {
+const SendMessage = ({messagesRefFirebasePerRoomId}) => {
   const {user} = useContext(UserContext);
   const {currentRoom} = useContext(CurrentRoomContext);
   const [messageText, setMessageText] = useState('');
@@ -16,7 +16,7 @@ const SendMessage = ({messagesRefFirebase}) => {
     user,
   });
 
-  const messageId = messagesRefFirebase.push().key;
+  const messageId = messagesRefFirebasePerRoomId.push().key;
   const newMessage = createMessage(messageId);
 
   return (
@@ -28,7 +28,7 @@ const SendMessage = ({messagesRefFirebase}) => {
       />
       <button
         onClick={() =>
-          messagesRefFirebase
+          messagesRefFirebasePerRoomId
             .child(messageId)
             .set(newMessage)
             .then(msg => {
