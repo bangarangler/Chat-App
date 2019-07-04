@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './ChatPanel.css';
+import firebase from '../logic/firebase.js';
 
 function ChatPanel() {
+  const messagesRefFirebase = firebase.database().ref('messages');
   return (
     <div className="ChatPanel">
       <div>Room 1</div>
@@ -15,7 +17,16 @@ function ChatPanel() {
       </div>
       <div style={{display: 'flex'}}>
         <input style={{flexGrow: 1}} placeholder="insert message ..." />
-            <button>send message</button>
+        <button
+          onClick={() =>
+            messagesRefFirebase
+              .child('id2')
+              .set({text: 'some text 2'})
+              .then(msg => console.log(`set success : ${msg}`))
+              .catch(err => console.log(`set error: ${err}`))
+          }>
+          send message
+        </button>
       </div>
     </div>
   );
