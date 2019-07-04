@@ -39,7 +39,7 @@ function ChatPanel() {
   }, [currentRoom.id])
   return (
     <div className="ChatPanel">
-    <CurrentRoom />
+    <CurrentRoom messages={messages} />
     <Messages messages={messages}/>
     <SendMessage messagesRefFirebasePerRoomId={messagesRefFirebasePerRoomId}/>
     </div>
