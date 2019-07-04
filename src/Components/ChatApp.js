@@ -2,12 +2,22 @@ import React, {useState} from 'react';
 import SidePanel from './SidePanel/SidePanel.js';
 import ChatPanel from './ChatPanel/ChatPanel.js';
 import './ChatApp.css';
-import CurrentRoomContext from '../context/UserContext.js';
+import CurrentRoomContext from '../context/CurrentRoomContext.js';
 import UserContext from '../context/UserContext.js';
 
 const ChatApp = () => {
-  const [user, setUser] = useState(null);
-  const [currentRoom, setCurrentRoom] = useState(null);
+  // TODO: use null after user login
+  const [user, setUser] = useState({
+    displayName: "Nathan",
+    photoURL: "",
+    uid: "id nathan"
+  });
+  //TODO: use null after room selected logic
+  const [currentRoom, setCurrentRoom] = useState({
+    id: 'id1',
+    name: 'room1',
+    description: 'room1 description'
+  });
   return (
     <div className="ChatApp">
       <UserContext.Provider value={{user, setUser}}>

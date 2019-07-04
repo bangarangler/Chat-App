@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import CurrentRoomContext from '../../context/CurrentRoomContext.js'
 
 const CurrentRoom = () => {
+  const { currentRoom } = useContext(CurrentRoomContext)
   return (
     <div>
-    room1
+    {currentRoom.name}
     </div>
   )
 }
