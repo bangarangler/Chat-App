@@ -1,4 +1,6 @@
 .SidePanel {
   background: lightblue;
-  padding: 5px;
+  padding: 25px;
+  background-color: #3c2f3e;
+  color: white;
 }

@@ -1,5 +1,7 @@
 .SendMessage {
   display: flex;
+  background-color: #fefefe;
+  padding: 5px;
 }
 
 .SendMessage > input {

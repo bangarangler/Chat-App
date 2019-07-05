@@ -4,9 +4,9 @@ import UserContext from '../../context/UserContext.js'
 const User = () => {
   const { user } = useContext(UserContext)
   return (
-    <div>
+    <h4>
     {user.displayName}
-    </div>
+    </h4>
   )
 }
 

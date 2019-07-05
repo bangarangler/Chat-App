@@ -12,7 +12,6 @@ const ChatApp = () => {
     photoURL: "",
     uid: "id nathan"
   });
-  //TODO: use null after room selected logic
   const [currentRoom, setCurrentRoom] = useState(null);
   return (
     <div className="ChatApp">
