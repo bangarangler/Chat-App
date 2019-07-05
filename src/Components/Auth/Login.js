@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {appName, appIconName} from '../../logic/Constants.js';
 import {Segment, Header, Icon, Button, Form, Message} from 'semantic-ui-react';
 import UserContext from '../../context/UserContext.js'
@@ -10,6 +10,32 @@ const Login = ({ history }) => {
   const { setUser } = useContext(UserContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [emailError, setEmailError] = useState("")
+  const [passwordError, setPasswordError] = useState("")
+  const [firebaseError, setFirebaseError] = useState("")
+
+  const isFormValid = !emailError && !passwordError;
+
+  const evaluateEmailError = (email) => {
+    if (!email.length) {
+    setEmailError("Email can not be empty")
+    } else {
+      setEmailError("")
+    }
+  }
+
+  const evaluatePasswordError = (password) => {
+    if (!password.length) {
+    setPasswordError("Password can not be empty")
+    } else {
+      setPasswordError("")
+    }
+  }
+
+  useEffect(() => {
+    evaluateEmailError(email)
+    evaluatePasswordError(password)
+  },[])
 
   const login = e => {
     e.preventDefault()
@@ -23,6 +49,7 @@ const Login = ({ history }) => {
       history.push("/")
     }).catch(err => {
       console.log(err)
+      setFirebaseError(err.message)
     })
   }
   return (
@@ -39,19 +66,28 @@ const Login = ({ history }) => {
             iconPosition="left"
             placeholder="E-mail address"
             type="email"
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => {
+              setEmail(e.target.value)
+              evaluateEmailError(e.target.value)
+            }}
           />
+              {emailError ? <Message negative>{emailError}</Message> : ""}
           <Form.Input
             icon="lock"
             value={password}
             iconPosition="left"
             placeholder="Password"
             type="password"
-            onChange={e => setPassword(e.target.value)}
+            onChange={e => {
+              setPassword(e.target.value)
+              evaluatePasswordError(e.target.value)
+            }}
           />
-          <Button size="large" fluid color="black" type="submit">
+              {passwordError ? <Message negative>{passwordError}</Message> : ""}
+          <Button disabled={!isFormValid} size="large" fluid color="black" type="submit">
             Login
           </Button>
+            {firebaseError ? <Message negative>{firebaseError}</Message> : ""}
         </Form>
       </Segment>
       <Message>
