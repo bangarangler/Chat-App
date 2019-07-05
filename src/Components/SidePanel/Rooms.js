@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import CurrentRoomContext from '../../context/CurrentRoomContext.js';
 import firebase from '../../logic/firebase.js';
+import AddRoomModal from './AddRoomModal.js'
+import './Rooms.css'
 
 const Rooms = () => {
   const {setCurrentRoom} = useContext(CurrentRoomContext);
@@ -10,21 +12,6 @@ const Rooms = () => {
   const refTo_roomsVariable = useRef()
   refTo_roomsVariable.current = rooms;
 
-  const addRoom = () => {
-    console.log('addRoom');
-    const roomId = roomsRefFirebase.push().key;
-    const newRoom = {
-      id: roomId,
-      name: 'room2', //TODO: replace with data from modal
-      description: 'desc2', // TODO: replace with data from modal
-    };
-
-    roomsRefFirebase
-      .child(roomId)
-      .set(newRoom)
-      .then(room => console.log(`success : ${room}`))
-      .catch(err => console.log(`error : ${err}`));
-  };
 
   const addRoomsListener = () => {
     console.log(`rooms listener added`)
@@ -52,22 +39,12 @@ const Rooms = () => {
   )
 
   return (
-    <div>
+    <div className="Rooms">
+      <div className="rooms-header">
       <h4>rooms ({rooms.length})</h4>
-      <button onClick={addRoom}>Add Room</button>
+    <AddRoomModal roomsRefFirebase={roomsRefFirebase}/>
+      </div>
         {roomsElements}
-        {/*}<ul>
-        <li onClick={() => setCurrentRoom({
-        id: 'idroom1',
-        name: 'room1',
-        description: 'desc1'
-      })}>Room 1</li>
-    <li onClick={() => setCurrentRoom({
-      id: 'idroom2',
-      name: 'room2',
-      description: 'desc2'
-    })}>Room 2</li>
-      </ul>*/}
     </div>
   );
 };
