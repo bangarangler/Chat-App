@@ -10,3 +10,7 @@
 .Register > div {
   width: 450px;
 }
+
+.Register .message {
+  text-align: center;
+}
