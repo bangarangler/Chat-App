@@ -2,11 +2,14 @@ import React from 'react';
 import './SidePanel.css'
 import User from './User.js'
 import Rooms from './Rooms.js'
+import { Header, Icon } from 'semantic-ui-react'
 
 const SidePanel = () => {
   return (
     <div className='SidePanel'>
-      <h2>ChatApp</h2>
+    <Header inverted as='h2'>
+    <Icon name="wechat" />
+    ChatApp</Header>
       <User />
     <Rooms />
     </div>

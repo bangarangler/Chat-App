@@ -9,7 +9,7 @@ const ChatApp = () => {
   // TODO: use null after user login
   const [user, setUser] = useState({
     displayName: "Nathan",
-    photoURL: "",
+    photoURL: "https://cdn.pixabay.com/photo/2019/01/05/17/05/man-3915438__480.jpg",
     uid: "id nathan"
   });
   const [currentRoom, setCurrentRoom] = useState(null);
