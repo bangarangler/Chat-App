@@ -6,4 +6,6 @@
 
 .SendMessage > input {
   flex-grow: 1;
+  padding: 5px;
+  margin-right: 10px;
 }

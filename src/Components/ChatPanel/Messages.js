@@ -1,16 +1,24 @@
 import React from 'react';
 import './Messages.css';
-import moment from 'moment'
+import moment from 'moment';
+import {Comment} from 'semantic-ui-react';
 
 const Messages = ({messages}) => {
   const messagesElements = (
-    <ul>
+    <Comment.Group>
       {messages.map((item, index) => (
-        <li key={index}>
-          {item.text}, {item.user.displayName}, {moment(item.timestamp).fromNow()}
-        </li>
+        <Comment key={index}>
+          <Comment.Avatar src={item.user.photoURL} />
+          <Comment.Content>
+            <Comment.Author>{item.user.displayName}</Comment.Author>
+            <Comment.Metadata>
+              {moment(item.timestamp).fromNow()}
+            </Comment.Metadata>
+            <Comment.Text>{item.text}</Comment.Text>
+          </Comment.Content>
+        </Comment>
       ))}
-    </ul>
+    </Comment.Group>
   );
   return <div className="Messages">{messagesElements}</div>;
 };
