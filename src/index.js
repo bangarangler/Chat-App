@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ChatApp from './Components/ChatApp.js';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
+import Root from '../src/Components/Root'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-ReactDOM.render(<ChatApp />, document.getElementById('root'));
+ReactDOM.render(<Router><Root /></Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
