@@ -47,7 +47,7 @@ const Rooms = () => {
 
   const roomsElements = (
   <ul>
-      {rooms.map((it, index) => <li key={index}>{it.name}</li>)}
+      {rooms.map((it, index) => <li onClick={() => setCurrentRoom(rooms[index])} key={index}>{it.name}</li>)}
   </ul>
   )
 
