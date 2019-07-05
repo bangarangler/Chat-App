@@ -1,6 +1,6 @@
 import React from 'react';
 import './SidePanel.css'
-import User from './User.js'
+import UserMenu from './UserMenu.js'
 import Rooms from './Rooms.js'
 import { Header, Icon } from 'semantic-ui-react'
 import { appName, appIconName } from '../../logic/Constants.js'
@@ -11,7 +11,7 @@ const SidePanel = () => {
     <Header inverted as='h2'>
     <Icon name={appIconName} />
       {appName}</Header>
-      <User />
+      <UserMenu />
     <Rooms />
     </div>
   );

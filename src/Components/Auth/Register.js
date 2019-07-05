@@ -30,6 +30,7 @@ const Register = ({ history }) => {
 
   return (
     <div className="Register">
+    <div>
     <Segment stacked>
       <Header as="h2">
         <Icon name={appIconName} />
@@ -73,6 +74,7 @@ const Register = ({ history }) => {
         </Button>
       </Form>
     </Segment>
+    </div>
     </div>
   );
 };

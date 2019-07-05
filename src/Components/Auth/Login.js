@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import {appName, appIconName} from '../../logic/Constants.js';
-import {Segment, Header, Icon, Button, Form} from 'semantic-ui-react';
+import {Segment, Header, Icon, Button, Form, Message} from 'semantic-ui-react';
 import UserContext from '../../context/UserContext.js'
 import firebase from '../../logic/firebase.js'
 import './Login.css'
+import { Link } from 'react-router-dom'
 
 const Login = ({ history }) => {
   const { setUser } = useContext(UserContext)
@@ -26,6 +27,7 @@ const Login = ({ history }) => {
   }
   return (
     <div className="Login">
+      <div>
      <Segment stacked>
         <Header color="black" as="h2">
           <Icon name={appIconName} /> Login to {appName}
@@ -52,6 +54,10 @@ const Login = ({ history }) => {
           </Button>
         </Form>
       </Segment>
+      <Message>
+          New to us ? <Link to="/Register">Register</Link>
+      </Message>
+    </div>
     </div>
   );
 };

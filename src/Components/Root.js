@@ -5,6 +5,7 @@ import Login from '../Components/Auth/Login.js';
 import Register from '../Components/Auth/Register.js';
 import UserContext from '../context/UserContext.js';
 import firebase from '../logic/firebase.js'
+import { withRouter } from 'react-router-dom'
 
 const Root = ({ history }) => {
   const [user, setUser] = useState({displayName: "", uid: "", photoURL: ""});
@@ -35,4 +36,4 @@ const Root = ({ history }) => {
   );
 };
 
-export default Root;
+export default withRouter(Root);
